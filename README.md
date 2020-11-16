@@ -1,3 +1,6 @@
+This fork by muskit aims to implement audio playback instead of complete silence during ad breaks.
+
+*Working off commit `a4bd292976c53186b2f054b21ba0aa46eb17ef10`, the last commit involved in the latest binary release from MatrixDJ96.*
 # EZBlocker 2
 
 ### This is an <i>unofficial</i> successor of [EZBlocker][1] by Eric Zhang
