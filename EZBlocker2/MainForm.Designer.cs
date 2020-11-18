@@ -43,18 +43,19 @@ namespace EZBlocker2
             this.btnSndVol = new System.Windows.Forms.Button();
             this.imgSpotifyLogo = new System.Windows.Forms.PictureBox();
             this.checkBoxPlayAudioWhenMuted = new System.Windows.Forms.CheckBox();
+            this.checkBoxLoopAudio = new System.Windows.Forms.CheckBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelStatusBar = new System.Windows.Forms.Panel();
             this.imgEZBlockerLogo = new System.Windows.Forms.PictureBox();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.labelVolume = new System.Windows.Forms.Label();
             this.trackBarVolume = new System.Windows.Forms.TrackBar();
             this.checkBoxSimulateAdBreak = new System.Windows.Forms.CheckBox();
             this.labelAudioFile = new System.Windows.Forms.Label();
             this.buttonLoadAudio = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.checkBoxLoopAudio = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel6 = new System.Windows.Forms.LinkLabel();
@@ -69,7 +70,6 @@ namespace EZBlocker2
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.timerSpotify = new System.Windows.Forms.Timer(this.components);
-            this.labelVolume = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgSpotifyLogo)).BeginInit();
             this.panelMain.SuspendLayout();
             this.panelStatusBar.SuspendLayout();
@@ -257,9 +257,30 @@ namespace EZBlocker2
             this.checkBoxPlayAudioWhenMuted.TabIndex = 12;
             this.checkBoxPlayAudioWhenMuted.TabStop = false;
             this.checkBoxPlayAudioWhenMuted.Text = "Instead of muting, play an audio clip";
-            this.toolTip.SetToolTip(this.checkBoxPlayAudioWhenMuted, "While ad is playing set Spotify system volume to zero");
+            this.toolTip.SetToolTip(this.checkBoxPlayAudioWhenMuted, "If \"Mute ads\" is enabled, EZBlocker2 will play an audio clip (if loaded) while Sp" +
+        "otify is muted");
             this.checkBoxPlayAudioWhenMuted.UseVisualStyleBackColor = false;
             this.checkBoxPlayAudioWhenMuted.CheckedChanged += new System.EventHandler(this.CheckBoxPlayAudioWhenMuted_CheckedChanged);
+            // 
+            // checkBoxLoopAudio
+            // 
+            this.checkBoxLoopAudio.AutoSize = true;
+            this.checkBoxLoopAudio.BackColor = System.Drawing.Color.Transparent;
+            this.checkBoxLoopAudio.Checked = true;
+            this.checkBoxLoopAudio.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLoopAudio.FlatAppearance.BorderSize = 0;
+            this.checkBoxLoopAudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxLoopAudio.ForeColor = System.Drawing.Color.White;
+            this.checkBoxLoopAudio.Location = new System.Drawing.Point(60, 205);
+            this.checkBoxLoopAudio.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBoxLoopAudio.Name = "checkBoxLoopAudio";
+            this.checkBoxLoopAudio.Size = new System.Drawing.Size(61, 22);
+            this.checkBoxLoopAudio.TabIndex = 12;
+            this.checkBoxLoopAudio.TabStop = false;
+            this.checkBoxLoopAudio.Text = "Loop";
+            this.toolTip.SetToolTip(this.checkBoxLoopAudio, "Repeat the audio clip if it has ended");
+            this.checkBoxLoopAudio.UseVisualStyleBackColor = false;
+            this.checkBoxLoopAudio.CheckedChanged += new System.EventHandler(this.CheckBoxLoopAudio_CheckedChanged);
             // 
             // titleLabel
             // 
@@ -349,13 +370,24 @@ namespace EZBlocker2
             this.panelContainer.Size = new System.Drawing.Size(600, 363);
             this.panelContainer.TabIndex = 0;
             // 
+            // labelVolume
+            // 
+            this.labelVolume.AutoSize = true;
+            this.labelVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.labelVolume.ForeColor = System.Drawing.Color.White;
+            this.labelVolume.Location = new System.Drawing.Point(402, 213);
+            this.labelVolume.Name = "labelVolume";
+            this.labelVolume.Size = new System.Drawing.Size(58, 18);
+            this.labelVolume.TabIndex = 17;
+            this.labelVolume.Text = "Volume";
+            // 
             // trackBarVolume
             // 
             this.trackBarVolume.LargeChange = 10;
-            this.trackBarVolume.Location = new System.Drawing.Point(322, 183);
+            this.trackBarVolume.Location = new System.Drawing.Point(333, 183);
             this.trackBarVolume.Maximum = 50;
             this.trackBarVolume.Name = "trackBarVolume";
-            this.trackBarVolume.Size = new System.Drawing.Size(218, 45);
+            this.trackBarVolume.Size = new System.Drawing.Size(207, 45);
             this.trackBarVolume.TabIndex = 16;
             this.trackBarVolume.Value = 50;
             this.trackBarVolume.Scroll += new System.EventHandler(this.TrackBarVolume_Scroll);
@@ -371,6 +403,7 @@ namespace EZBlocker2
             this.checkBoxSimulateAdBreak.Size = new System.Drawing.Size(145, 22);
             this.checkBoxSimulateAdBreak.TabIndex = 1;
             this.checkBoxSimulateAdBreak.Text = "Simulate ad break";
+            this.toolTip.SetToolTip(this.checkBoxSimulateAdBreak, "If ticked, EZBlocker2 will behave as if a Spotify ad is playing");
             this.checkBoxSimulateAdBreak.UseVisualStyleBackColor = true;
             this.checkBoxSimulateAdBreak.CheckedChanged += new System.EventHandler(this.CheckBoxSimulateAdBreak);
             // 
@@ -424,25 +457,6 @@ namespace EZBlocker2
             this.linkLabel4.Text = "Developed by: MatrixDJ96";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelDeveloper_LinkClicked);
             // 
-            // checkBoxLoopAudio
-            // 
-            this.checkBoxLoopAudio.AutoSize = true;
-            this.checkBoxLoopAudio.BackColor = System.Drawing.Color.Transparent;
-            this.checkBoxLoopAudio.Checked = true;
-            this.checkBoxLoopAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLoopAudio.FlatAppearance.BorderSize = 0;
-            this.checkBoxLoopAudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxLoopAudio.ForeColor = System.Drawing.Color.White;
-            this.checkBoxLoopAudio.Location = new System.Drawing.Point(60, 205);
-            this.checkBoxLoopAudio.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBoxLoopAudio.Name = "checkBoxLoopAudio";
-            this.checkBoxLoopAudio.Size = new System.Drawing.Size(61, 22);
-            this.checkBoxLoopAudio.TabIndex = 12;
-            this.checkBoxLoopAudio.TabStop = false;
-            this.checkBoxLoopAudio.Text = "Loop";
-            this.checkBoxLoopAudio.UseVisualStyleBackColor = false;
-            this.checkBoxLoopAudio.CheckedChanged += new System.EventHandler(this.CheckBoxLoopAudio_CheckedChanged);
-            // 
             // linkLabel1
             // 
             this.linkLabel1.ActiveLinkColor = System.Drawing.SystemColors.MenuHighlight;
@@ -450,15 +464,15 @@ namespace EZBlocker2
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.LightGray;
-            this.linkLabel1.Location = new System.Drawing.Point(194, 338);
+            this.linkLabel1.Location = new System.Drawing.Point(196, 338);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(213, 16);
-            this.linkLabel1.TabIndex = 10;
+            this.linkLabel1.Size = new System.Drawing.Size(208, 16);
+            this.linkLabel1.TabIndex = 12;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Audio playback mod by: Alex Tran";
+            this.linkLabel1.Text = "Audio playback fork by: Alex Tran";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelOriginalProject_LinkClicked);
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelAudioBreakForker_LinkClicked);
             // 
             // linkLabel5
             // 
@@ -590,17 +604,6 @@ namespace EZBlocker2
             // 
             this.timerSpotify.Interval = 1000;
             this.timerSpotify.Tick += new System.EventHandler(this.TimerSpotify_Tick);
-            // 
-            // labelVolume
-            // 
-            this.labelVolume.AutoSize = true;
-            this.labelVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelVolume.ForeColor = System.Drawing.Color.White;
-            this.labelVolume.Location = new System.Drawing.Point(402, 213);
-            this.labelVolume.Name = "labelVolume";
-            this.labelVolume.Size = new System.Drawing.Size(58, 18);
-            this.labelVolume.TabIndex = 17;
-            this.labelVolume.Text = "Volume";
             // 
             // MainForm
             // 

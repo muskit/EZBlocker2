@@ -40,6 +40,7 @@ namespace EZBlocker2
         private readonly string developer_website = "https://github.com/MatrixDJ96";
         private readonly string original_website = "https://github.com/Xeroday/Spotify-Ad-Blocker";
         private readonly string designer_website = "https://github.com/Bruske";
+        private readonly string audiobreakfork_website = "https://github.com/muskit/EZBlocker2";
 
         // WebServer
         private CustomWebServer server = null;
@@ -789,6 +790,8 @@ namespace EZBlocker2
         private void LinkLabelOriginalProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => StartProcess(original_website);
 
         private void LinkLabelDesigner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => StartProcess(designer_website);
+
+        private void LinkLabelAudioBreakForker_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => StartProcess(audiobreakfork_website);
 
         private void CheckBoxMuteAds_CheckedChanged(object sender, EventArgs e)
         {
