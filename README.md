@@ -1,4 +1,4 @@
-This fork by muskit aims to implement audio playback instead of complete silence during ad breaks.
+This fork by Alex Tran (muskit) aims to implement audio playback instead of complete silence during ad breaks.
 
 *Working off commit `a4bd292976c53186b2f054b21ba0aa46eb17ef10`, the last commit involved in the latest binary release from MatrixDJ96.*
 # EZBlocker 2
@@ -55,6 +55,11 @@ EZBlocker 2 will create a log with all errors detected. If you want to open a is
 #
 
 ### Changelog
+Version 2.2.0.0:
+- Added audio playback during muted ad breaks
+- Added ad break simulation
+- Settings pertaining to ad-break audio playback are saved
+- Limited the window dragging zone to the banner and title bar
 
 Version 2.1.4.0:
 - Changed request interval to 500ms
