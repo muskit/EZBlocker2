@@ -51,6 +51,7 @@ EZBlocker 2 will create a log with all errors detected. If you want to open a is
 - FadeMind for [hosts][4] patches
 - Mark Heath for [NAudio][5] library
 - James Newton-King for [Json.NET][6] library
+- Alex Tran for the audio-during-muted-ads fork
 
 #
 
