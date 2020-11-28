@@ -1,6 +1,7 @@
 ### This fork by Alex Tran (muskit) adds automatic playback of audio during muted ad breaks.
 
 Besides muting Spotify, you can now choose to play an audio clip during ad breaks!
+![Image of fork explanation](images/fork-explanation.png)
 
 *Working off commit `a4bd292976c53186b2f054b21ba0aa46eb17ef10`, the last commit involved in the latest binary release from MatrixDJ96.*
 # EZBlocker 2
